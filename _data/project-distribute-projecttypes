@@ -1,0 +1,10 @@
+{"_id":{"$oid":"56094554fe0a2c43968e7f86"},"key":"event","name":"Event","__v":0}
+{"_id":{"$oid":"56094563fe0a2c43968e7f87"},"key":"concert","name":"Concert","__v":0}
+{"_id":{"$oid":"56094568fe0a2c43968e7f88"},"key":"festival","name":"Festival","__v":0}
+{"_id":{"$oid":"5609456cfe0a2c43968e7f89"},"key":"vinyl","name":"Vinyl","__v":0}
+{"_id":{"$oid":"56094570fe0a2c43968e7f8a"},"key":"music-video","name":"Music Video","__v":0}
+{"_id":{"$oid":"56094596fe0a2c43968e7f8b"},"key":"album","name":"Album","__v":0}
+{"_id":{"$oid":"5609459bfe0a2c43968e7f8c"},"key":"live-recording","name":"Live Recording","__v":0}
+{"_id":{"$oid":"560945c4fe0a2c43968e7f8d"},"key":"interview","name":"Interview","__v":0}
+{"_id":{"$oid":"560945cffe0a2c43968e7f8e"},"key":"app","name":"App","__v":0}
+{"_id":{"$oid":"560945d4fe0a2c43968e7f8f"},"key":"kickstarter","name":"Kickstarter","__v":0}

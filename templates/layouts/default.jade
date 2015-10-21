@@ -42,23 +42,21 @@ html
 			//- Customise your site's navigation by changing the navLinks Array in ./routes/middleware.js
 			//- ... or completely change this header to suit your design.
 
-			div(role="navigation").navbar.navbar-default
-				.container-fluid
+			div(role="navigation").navbar.navbar-fixed-top.navbar-inverse
+				.container
 					.navbar-header
 						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
 							span.sr-only Toggle navigation
 							span.icon-bar
 							span.icon-bar
 							span.icon-bar
-						a.navbar-brand(href='/') Project Distribute
+						a.navbar-brand(href='/'): img(src='/images/logo.svg', width='20')
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
-							each link in navLinks
-								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 						ul.nav.navbar-nav.navbar-right
 							if user
+								li: a(href='/contact') Recommend New Member
 								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
+									li: a(href='/keystone') Dashboard
 								li: a(href='/keystone/signout') Sign Out
 							else
 								li: a(href='/keystone/signin') Sign In
@@ -82,10 +80,13 @@ html
 
 
 		//- FOOTER
-		.container: #footer
-
+		.container: #footer.text-center
+			.nav-links
+				each link in navLinks
+					span(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+					span &nbsp;&nbsp;
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
+			p Powered by <a href="http://www.shalomsalon.de" target="_blank">Shalom Salon</a>.
 
 
 		//- JAVASCRIPT

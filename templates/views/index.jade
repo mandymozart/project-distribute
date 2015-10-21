@@ -1,23 +1,40 @@
 extends ../layouts/default
 
 block content
-	.container: .jumbotron
-		img(src='/images/logo.svg', width='160')
-		h1 Welcome
-		p This is your new <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>dannydevelop@shalomsalon.de</strong> and the password <strong>admin</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
+	.container 
+		.jumbotron
+			img(src='/images/logo.svg', width='100')
+			h1 Welcome to Project Distributers
+			p We are a closed community of independent publishers and artists that share the <b>Distribute Database</b>.
+			p <b>Project Distribute</b> helps you optimise your self-distribution and reduce spam to selected media channels and opinion makers.
+			hr
+			if user && user.canAccessKeystone
+				.alert.alert-success 
+					h4 Heads Up!
+					p You are already signed in as administrator. 
+						a(href='/keystone') Open Dashboard
+			else 
+				p All applicants have to be approved by all existing members of the platform. <br> You can find the <a href='/contact'>Application Form</a> here.
+			hr
+			p <a href='http://www.twitter.com/shalomsalon' target='_blank'>Follow @shalomsalon</a> on twitter for updates.
+		.marketing 
+			.row
+				.col-md-offset-2.col-md-8
+					h2 Why did we do it?
+					p.lead Every time we released something through our channels we ended up contacting similar people or media outlets for different types of campaigns. Some responded via Facebook, 
+						| some only via Email and others we could only get a hold off via a direct call. We tried to remember for each how to best contact them for which type of content, 
+						| but our Excel Spreadsheets and Mailings Lists became huge and useless. It was almost also impossible to forward that knowledge to new members in our team.
+					p.lead So usually what happened is that we just send out mass emails or randomly hit up people after a long period on Facebook saying things like: "Hey, wanna know what's new?"
+					p.lead This is inefficient and also very random, because it is limited to your brains power to remember how to make somebody interested in similar content. Often the result is, that people consider this behavior spam, just simply annoying or the familiar person at that Radio Station or Blog left their position - A promotion deadend.
+					p.lead That was when we decided to put all of our contacts into a shared Database with a campaign tracking feature. Only amongst labels and artists that would on request share wanted contacts with us anyhow, if we'd ask.
+					hr
+					h2 This is how it works!
+					p.lead The Database is build upon <b>Domains</b>, which could be either <i>Organisations, Companies, Labels, Blogs, Distributers, Records Shops, Festivals, Promoter, etc.</i>
+					p.lead For each Domain there is infinite amounts of <b>Socials</b>, which is simply a contact to a specific person like an <i>Email, Phone Number, Facebook or Twitter Account</i>. Each Social can belong to one or many Domains, so if Sandy Sample works for a small vinyl record shop and for TheFader Magazin, she can be found searching for different agendas. The Database remembers which <b>Social</b> had the best response rate and will help you find the right way of contacting.
+					p.lead The fun starts by creating a new <b>Campaign</b>, which can be realized by either copying all the Socials from an existing or past campaign of any of the members or your own. Similiar campaigns will of course help you find the right people to contact quickly. Within a Campaign you can also remark when you contacted somebody and if or when they responded. This will help the Database grow smarter everytime it is used.
+					p.lead Project Distribute is a combination of Artifical Intelligence and Human Intelligence that is build upon social interactions. 
+					hr
+					h2 Privacy
+					p.lead All members can choose to keep any item in the Database public or private, sharing it with the community or keeping it for their own campaigns.
+					p.lead It's not a crawler! It's not a spam bot!
+					p.lead Rather the opposite. It a community filter designed to make more relevant communication and refocus on the thing that united us in the first place. Making Music and Art!
