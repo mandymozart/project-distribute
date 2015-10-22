@@ -1,0 +1,12 @@
+extends ../layouts/default
+
+block content
+	.container
+		.row 
+			.col-md-3
+				include ../includes/navigation-dashboard.jade
+			.col-md-9 
+				h1 Hello #{user.name.first},
+				p.lead this is your dashboard from where you manage your <a href="/campaigns">campaigns</a> 
+					| and have access to the <a href="/domins/">domains</a> and contacts in the database.
+

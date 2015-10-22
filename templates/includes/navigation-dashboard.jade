@@ -1,0 +1,12 @@
+.list-group
+	if user
+		a(href='/dashboard', class=section == 'dashboard' ? 'active' : false).list-group-item Dashboard
+		a(href='/domains', class=section == 'domains' ? 'active' : false).list-group-item Domains
+		a(href='/campaigns', class=section == 'campaigns' ? 'active' : false).list-group-item Campaigns
+		a.divider
+		a(href='/contact', class=section == 'contact' ? 'active' : false).list-group-item Recommend New Member
+		if user.canAccessKeystone
+			a(href='/keystone').list-group-item Admin
+		a(href='/keystone/signout').list-group-item Sign Out
+	else
+		a(href='/keystone/signin').list-group-item Sign In 

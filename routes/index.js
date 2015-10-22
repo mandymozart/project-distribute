@@ -42,5 +42,15 @@ exports = module.exports = function(app) {
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
+	// Dashboard
+	app.get('/dashboard', middleware.requireUser, routes.views.dashboard);
+	// Lists
+	app.all('/domains/:category?', middleware.requireUser, routes.views.domains);
+	app.all('/campaigns/:type?', middleware.requireUser, routes.views.campaigns);
+	// Functions/Details
+	app.all('/domain/:domain?', middleware.requireUser, routes.views.domain);
+	//app.all('/campaign/:campaign?', middleware.requireUser, routes.views.campaign);
+	//app.all('/social/:social?', middleware.requireUser, routes.views.social);
 	
+
 };

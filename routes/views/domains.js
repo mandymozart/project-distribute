@@ -5,21 +5,24 @@ exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
+	var user = req.user;
 	
-	// Init locals
-	locals.section = 'blog';
+	// Set locals
+	locals.section = 'domains';
+
 	locals.filters = {
 		category: req.params.category
 	};
 	locals.data = {
-		posts: [],
+		domains: [],
 		categories: []
 	};
 	
+
 	// Load all categories
 	view.on('init', function(next) {
 		
-		keystone.list('PostCategory').model.find().sort('name').exec(function(err, results) {
+		keystone.list('DomainCategory').model.find().sort('name').exec(function(err, results) {
 			
 			if (err || !results.length) {
 				return next(err);
@@ -30,16 +33,14 @@ exports = module.exports = function(req, res) {
 			// Load the counts for each category
 			async.each(locals.data.categories, function(category, next) {
 				
-				keystone.list('Post').model.count().where('categories').in([category.id]).exec(function(err, count) {
-					category.postCount = count;
+				keystone.list('Domain').model.count().where('category').in([category.id]).exec(function(err, count) {
+					category.domainCount = count;
 					next(err);
-					console.log(type.count);
 				});
 				
 			}, function(err) {
 				next(err);
 			});
-			
 		});
 		
 	});
@@ -48,40 +49,42 @@ exports = module.exports = function(req, res) {
 	view.on('init', function(next) {
 		
 		if (req.params.category) {
-			keystone.list('PostCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
+			keystone.list('DomainCategory').model.findOne({ key: locals.filters.category }).exec(function(err, result) {
 				locals.data.category = result;
 				next(err);
+				console.log(locals.data.category);
 			});
 		} else {
 			next();
 		}
-		
 	});
 	
-	// Load the posts
+	// Load the Domains
 	view.on('init', function(next) {
 		
-		var q = keystone.list('Post').paginate({
+		var q = keystone.list('Domain').paginate({
 				page: req.query.page || 1,
-				perPage: 10,
+				perPage: 20,
 				maxPages: 10
 			})
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('author categories');
-		
+			.sort('createdAt')
+			.populate('user category');
+
 		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
+			q.where('category').in([locals.data.category]);
 		}
-		
+		// Todo: add public & user Domains to query
+		//q.where('user', user);
+		//console.log(locals.data);
+
 		q.exec(function(err, results) {
-			locals.data.posts = results;
+			locals.data.domains = results;
 			next(err);
 		});
 		
 	});
-	
+
 	// Render the view
-	view.render('blog');
+	view.render('Domains');
 	
 };

@@ -15,7 +15,8 @@ html
 		//- Customise the stylesheet for your site by editing /public/styles/site.less
 		//- All .less files will be automatically compiled and minified in production.
 		link(href="/styles/site.min.css", rel="stylesheet")
-
+		//link(href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/lumen/bootstrap.min.css", rel="stylesheet" integrity="sha256-kBMbBs0vxJSlN7T3a7hOLllj53zib5nbF7rn4NAKy04= sha512-PwtEPLjYjtwEveJNXQTih2qsQhTg4tjgIy0gruouyKN5NLD4G4jh+mMrf7cA2s5PVI71UlS8DBYr1iqrN7ivBg==" crossorigin="anonymous")
+		link(href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css", rel="stylesheet" integrity="sha256-hMIwZV8FylgKjXnmRI2YY0HLnozYr7Cuo1JvRtzmPWs= sha512-k+wW4K+gHODPy/0gaAMUNmCItIunOZ+PeLW7iZwkDZH/wMaTrSJTt7zK6TGy6p+rnDBghAxdvu1LX2Ohg0ypDw==" crossorigin="anonymous")
 		//- This file provides the default styling for the KeystoneJS Content Editor
 		if user && user.canAccessKeystone
 			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
@@ -52,11 +53,16 @@ html
 							span.icon-bar
 						a.navbar-brand(href='/'): img(src='/images/logo.svg', width='20')
 					.collapse.navbar-collapse
+						if user
+							ul.nav.navbar-nav.navbar-left
+								li: a(href='/dashboard') Dashboard
+								li: a(href='/domains') Domains
+								li: a(href='/campaigns') Campaigns
 						ul.nav.navbar-nav.navbar-right
 							if user
 								li: a(href='/contact') Recommend New Member
 								if user.canAccessKeystone
-									li: a(href='/keystone') Dashboard
+									li: a(href='/keystone') Admin
 								li: a(href='/keystone/signout') Sign Out
 							else
 								li: a(href='/keystone/signin') Sign In
